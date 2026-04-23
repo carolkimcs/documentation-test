@@ -1,0 +1,193 @@
+{
+  "props": [
+    {
+      "name": "State",
+      "type": "variant",
+      "values": ["Enabled", "Invalid", "Warning", "Skeleton", "Read-only", "Focus", "Disabled"],
+      "default": "Enabled",
+      "required": false,
+      "description": "Visual and interactive state of the checkbox. Controls appearance and interactivity."
+    },
+    {
+      "name": "Selection",
+      "type": "variant",
+      "values": ["Unchecked", "Checked", "Indeterminate"],
+      "default": "Unchecked",
+      "required": false,
+      "description": "Selection state of the checkbox icon. Indeterminate indicates a mixed state in grouped checkboxes."
+    },
+    {
+      "name": "Indented",
+      "type": "boolean",
+      "values": ["true", "false"],
+      "default": "false",
+      "required": false,
+      "description": "Adds a spacer before the checkbox to create visual hierarchy in nested checkbox lists."
+    },
+    {
+      "name": "Label",
+      "type": "boolean",
+      "values": ["true", "false"],
+      "default": "true",
+      "required": false,
+      "description": "Shows or hides the top label element above the checkbox row."
+    },
+    {
+      "name": "Value",
+      "type": "boolean",
+      "values": ["true", "false"],
+      "default": "true",
+      "required": false,
+      "description": "Shows or hides the inline text label displayed next to the checkbox icon."
+    },
+    {
+      "name": "Error message",
+      "type": "boolean",
+      "values": ["true", "false"],
+      "default": "true",
+      "required": false,
+      "description": "Shows or hides the error message. Visible when State is Invalid."
+    },
+    {
+      "name": "Warning message",
+      "type": "boolean",
+      "values": ["true", "false"],
+      "default": "true",
+      "required": false,
+      "description": "Shows or hides the warning message. Visible when State is Warning."
+    },
+    {
+      "name": "Helper message",
+      "type": "boolean",
+      "values": ["true", "false"],
+      "default": "false",
+      "required": false,
+      "description": "Shows or hides optional helper text displayed below the checkbox row."
+    },
+    {
+      "name": "Show toggletip",
+      "type": "boolean",
+      "values": ["true", "false"],
+      "default": "false",
+      "required": false,
+      "description": "Shows an information icon with toggletip tooltip next to the label."
+    },
+    {
+      "name": "Value text",
+      "type": "text",
+      "values": ["String"],
+      "default": "Checkbox label",
+      "required": false,
+      "description": "Text content for the inline label displayed next to the checkbox icon."
+    },
+    {
+      "name": "Label text",
+      "type": "text",
+      "values": ["String"],
+      "default": "Label",
+      "required": false,
+      "description": "Text content for the top label element."
+    },
+    {
+      "name": "Error text",
+      "type": "text",
+      "values": ["String"],
+      "default": "Error message goes here",
+      "required": false,
+      "description": "Error message shown when State is Invalid."
+    },
+    {
+      "name": "Warning text",
+      "type": "text",
+      "values": ["String"],
+      "default": "Warning message goes here",
+      "required": false,
+      "description": "Warning message shown when State is Warning."
+    },
+    {
+      "name": "Helper text",
+      "type": "text",
+      "values": ["String"],
+      "default": "Helper text goes here",
+      "required": false,
+      "description": "Helper text shown below the checkbox when Helper message is true."
+    }
+  ],
+  "variants": ["Enabled", "Invalid", "Warning", "Skeleton", "Read-only", "Focus", "Disabled"],
+  "selections": ["Unchecked", "Checked", "Indeterminate"],
+  "variantCount": 19,
+  "anatomy": {
+    "elements": [
+      {
+        "id": 1,
+        "type": "Frame",
+        "element": "Label",
+        "required": false,
+        "notes": "Container (3 children). Optional — controlled by 'Label' property."
+      },
+      {
+        "id": 2,
+        "type": "Frame",
+        "element": "Icon + Value",
+        "required": true,
+        "notes": "Container (4 children). Required — always visible."
+      },
+      {
+        "id": 3,
+        "type": "Frame",
+        "element": "Helper (hidden)",
+        "required": false,
+        "notes": "Container (1 child). Optional — controlled by 'Helper message'. Hidden by default."
+      }
+    ]
+  },
+  "dimensions": {
+    "height": 44,
+    "paddingVertical": 0,
+    "paddingHorizontal": 0,
+    "itemSpacing": 8,
+    "cornerRadius": 0
+  },
+  "tokens": {
+    "text-primary": "text/text-primary (#161616)",
+    "text-secondary": "text/text-secondary (#525252)",
+    "link-inverse": "link/link-inverse",
+    "icon-primary": "icon/icon-primary",
+    "icon-on-color": "icon/icon-on-color",
+    "support-error": "support/support-error",
+    "support-warning-alt-filled": "support/support-warning--alt-filled",
+    "background-inverse": "background/background-inverse",
+    "focus-focus": "focus/focus (#0F62FE)",
+    "field-disabled": "field/field-disabled"
+  },
+  "states": ["Enabled", "Invalid", "Warning", "Skeleton", "Read-only", "Focus", "Disabled"],
+  "accessibility": {
+    "role": "checkbox",
+    "keyboard": "Space to toggle checked/unchecked; Tab to navigate between checkboxes",
+    "aria_labels": ["aria-label", "aria-checked", "aria-disabled"],
+    "wcag_level": "AA",
+    "notes": "Use aria-checked with three values: true (checked), false (unchecked), mixed (indeterminate). The indeterminate state should only be set programmatically via aria-checked='mixed', not as a visual default.",
+    "screen_reader_states": {
+      "unchecked": "role=checkbox, aria-checked=false",
+      "checked": "role=checkbox, aria-checked=true",
+      "indeterminate": "role=checkbox, aria-checked=mixed",
+      "disabled": "role=checkbox, aria-disabled=true",
+      "read_only": "role=checkbox, aria-readonly=true"
+    }
+  },
+  "usage": {
+    "do": [
+      "Use checkboxes to allow users to select one or more options from a visible list",
+      "Use the indented variant to create visual hierarchy in nested checkbox lists",
+      "Display a helper message to provide additional context about the option",
+      "Use the label property for grouped checkbox sets to describe the group"
+    ],
+    "dont": [
+      "Do not use a checkbox when only one option can be selected — use a Radio button instead",
+      "Do not use a checkbox for a binary on/off action that takes immediate effect — use a Toggle instead",
+      "Do not use checkboxes as action buttons or navigation triggers"
+    ]
+  },
+  "dependencies": [],
+  "documentation": "https://www.carbondesignsystem.com/components/checkbox/usage/"
+}
